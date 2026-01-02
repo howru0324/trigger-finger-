@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Trigger Finger – A1 Pulley Simulator</title>
+
+<!-- PWA 필수 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#020617">
+<link rel="manifest" href="manifest.json">
+
+<style>
+/* ===== 기존 CSS 그대로 유지 ===== */
+body{
+  margin:0;
+  background:#020617;
+  display:flex;
+  justify-content:center;
+  padding:20px;
+  font-family:-apple-system, system-ui;
+  color:#e5e7eb;
+}
+.app{
+  width:950px;
+  border:1px solid #1f2937;
+  border-radius:14px;
+  padding:16px;
+  background:#020617;
+  box-shadow:0 20px 40px rgba(0,0,0,0.5);
+}
+.title{
+  font-size:20px;
+  font-weight:700;
+}
+.subtitle{
+  font-size:12px;
+  color:#9ca3af;
+  margin-top:2px;
+}
+.controls{
+  margin-top:10px;
+  display:flex;
+  justify-content:flex-start;
+  gap:8px;
+}
+.mode-btn{
+  font-size:12px;
+  padding:4px 10px;
+  border-radius:999px;
+  border:1px solid #4b5563;
+  background:#020617;
+  color:#e5e7eb;
+  cursor:pointer;
+}
+.mode-btn.active{
+  background:#0ea5e9;
+  border-color:#38bdf8;
+  color:#0b1120;
+  font-weight:600;
+}
+.stage{
+  margin-top:10px;
+  position:relative;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid #374151;
+  background:#020617;
+}
+canvas{
+  width:100%;
+  height:420px;
+  display:block;
+}
+.footer{
+  margin-top:8px;
+  font-size:12px;
+  color:#9ca3af;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+  <div class="title">Trigger Finger – PIP Tunnel</div>
+  <div class="subtitle">
+    Flexor tendon이 volar side 터널(PIP pulley) 안을 지나는 모습 · Normal / Trigger 모드 전환
+  </div>
+
+  <div class="controls">
+    <button id="btn-normal" class="mode-btn active">Normal 모드</button>
+    <button id="btn-trigger" class="mode-btn">Trigger 모드</button>
+  </div>
+
+  <div class="stage">
+    <canvas id="c" width="950" height="420"></canvas>
+  </div>
+
+  <div class="footer">
+    🔴 힘줄 끝(드래그 버튼)을 <b>왼쪽으로 드래그</b>하면 → tension ↑ → 손가락이 굽혀지고,<br>
+    nodule은 항상 <b>DIP 부근에서 시작</b>해서 드래그 비율만큼 근위로 gliding 합니다.<br>
+    Trigger 모드에서는 pulley 직전에서 nodule·버튼이 함께 멈췄다가, 일정 힘에서 ‘툭’ release 후  
+    다시 부드럽게 움직입니다. 손가락 뼈는 실제 지골 형태에 가깝게 표현되어 있습니다.
+  </div>
+</div>
+
+<script>
+/* ===== 기존 JS 그대로 (원장님 코드) ===== */
+/* == 여기 내용은 그대로 두시면 됩니다 == */
+/*     ↓↓↓ 원래 시뮬레이터 코드 전체 그대로 유지 ↓↓↓  */
+/* 지금 쓰시던 시뮬레이터 JS 코드 전부 여기에 그대로 넣으면 됩니다 */
+</script>
+
+
+<!-- ============================= -->
+<!--   ⛳️ PWA Service Worker 등록   -->
+<!-- ============================= -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js')
+      .then(reg => console.log("Service Worker Registered:", reg.scope))
+      .catch(err => console.log("SW Registration Failed:", err));
+  });
+}
+</script>
+
+</body>
+</html>
